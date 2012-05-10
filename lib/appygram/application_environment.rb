@@ -10,8 +10,6 @@ module Appygram
           'protocol_version' => Appygram::PROTOCOL_VERSION
         },
         'application_environment' => {
-          'environment' => environment,
-          'env' => extract_environment(ENV),
           'host' => get_hostname,
           'run_as_user' => get_username,
           'application_root_directory' => (application_root.to_s.respond_to?(:force_encoding) ? application_root.to_s.force_encoding("UTF-8") : application_root),
@@ -29,12 +27,6 @@ module Appygram
 
     def self.application_root
       Config.application_root
-    end
-
-    def self.extract_environment(env)
-      env.reject do |k, v|
-        (k =~ /^HTTP_/) || Appygram::ENVIRONMENT_FILTER.include?(k)
-      end
     end
 
     def self.get_hostname
