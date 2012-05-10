@@ -8,9 +8,8 @@ module Appygram
   class Remote
     class << self
       def startup_announce(startup_data)
-        url = "/api/announcements?api_key=#{::Appygram::Config.api_key}&protocol_version=#{::Appygram::PROTOCOL_VERSION}"
-        compressed = Zlib::Deflate.deflate(startup_data.to_json, Zlib::BEST_SPEED)
-        call_remote(url, compressed)
+        #FIXME this is a noop based on an Exceptional behavior Appygram doesn't have
+        Appygram.logger.info 'Appygram remote exception forwarding started'
       end
 
       def error(exception_data)
