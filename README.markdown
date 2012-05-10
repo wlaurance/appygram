@@ -50,7 +50,7 @@ development:
 
 production:
   enabled: true
-  api-key: you-prod-api-key
+  api-key: your-prod-api-key
 ```
 
 Copyright © 2012 Anything Labs.
